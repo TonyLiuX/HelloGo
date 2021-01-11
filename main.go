@@ -27,7 +27,8 @@ func main() {
 	var b float32
 	var c bool
 	var d string
-	fmt.Printf("%v %v %v %q\n", a, b, c, d)
+	b, bb := 2, 2
+	fmt.Printf("%v %v %v %q %v\n", a, b, c, d, bb)
 
 	fmt.Println("This is test!")
 	fmt.Printf("1 + 3 = %v\n", myMath.Add(1, 3))
