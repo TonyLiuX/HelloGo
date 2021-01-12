@@ -22,6 +22,12 @@ func (b *Books) say() {
 	fmt.Printf("书本：%v\n", b.title)
 }
 
+const (
+	Unknown = 0
+	Female  = 1
+	Male    = 2
+)
+
 func main() {
 	a := 1
 	var b float32
@@ -39,8 +45,8 @@ func main() {
 	fmt.Printf("Area is %v\n", Width*Height)
 
 	const (
-		j = 1 << iota
-		k
+		j = iota
+		k = 1 << iota
 	)
 	fmt.Printf("j: %v, k: %v\n", j, k)
 
