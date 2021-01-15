@@ -56,10 +56,12 @@ func main() {
 
 	// 数组
 	var g = [5]float32{1000.0, 2.0, 3.4, 7.0, 50.0}
-	fmt.Printf("数组：%v\n", g)
-	var g1 = g
+	fmt.Printf("数组g：%v\n", g)
+	var g1 = g // 值赋值
 	g1[0] = 100
-	fmt.Printf("数组: %v\n", g)
+	fmt.Printf("数组g: %v\n", g)
+	var g2 = []float32{100, 2}
+	fmt.Printf("数组g2：%v\n", g2)
 
 	// 指针
 	var ptr *int
