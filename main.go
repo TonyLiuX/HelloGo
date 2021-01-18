@@ -69,13 +69,18 @@ func main() {
 	fmt.Printf("a的值：%v, 存储地址 %v\n", *ptr, ptr)
 
 	const MAX = 3
-	h := []int{10, 100, 200}
+	h := [...]int{10, 100, 200}
 	var ptr1 [MAX]*int // 指针数组
 	for i := 0; i < MAX; i++ {
 		ptr1[i] = &h[i]
 	}
 	for i := 0; i < MAX; i++ {
 		fmt.Printf("a[%d] = %d, %v\n", i, *ptr1[i], ptr1[i])
+	}
+
+	for i, v := range h {
+		temp := v
+		fmt.Printf("h[%d]的地址：%v, 临时变量的地址：%v\n", i, &h[i], &temp)
 	}
 
 	// 结构体
