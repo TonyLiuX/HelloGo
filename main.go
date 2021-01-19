@@ -6,6 +6,11 @@ import (
 )
 import "awesomeProject/myMath"
 
+type BInterface interface {
+	say()
+	call()
+}
+
 type Books struct {
 	title   string
 	author  string
@@ -13,13 +18,26 @@ type Books struct {
 	bookId  int
 }
 
-type BInterface interface {
-	say()
+func (b Books) call() {
+	fmt.Println("implement me")
 }
 
 func (b *Books) say() {
 	b.title = "修改" + b.title
 	fmt.Printf("书本：%v\n", b.title)
+}
+
+type Person struct {
+	name string
+	age  int
+}
+
+func (p Person) say() {
+	fmt.Println("姓名：" + p.name + ", 年龄：" + string(rune(p.age)))
+}
+
+func (p Person) call() {
+
 }
 
 const (
@@ -80,7 +98,7 @@ func main() {
 
 	for i, v := range h {
 		temp := v
-		fmt.Printf("h[%d]的地址：%v, 临时变量的地址：%v\n", i, &h[i], &temp)
+		fmt.Printf("h[%d]的地址：%v, 临时变量的地址：%v，元素的地址：%v\n", i, &h[i], &temp, &v)
 	}
 
 	// 结构体
@@ -114,8 +132,12 @@ func main() {
 	slice1 = []int{1, 2, 3}
 	fmt.Println(slice1, len(slice1), cap(slice1))
 	slice2 := h[1:]
-	fmt.Println(slice2)
-	slice3 := slice1[1:]
+	fmt.Println(slice2, len(slice2), cap(slice2))
+	slice3 := slice1[:]
+	fmt.Println(slice3, len(slice3), cap(slice3))
+	slice3 = append(slice3, 0)
+	fmt.Println(slice3, len(slice3), cap(slice3))
+	copy(slice3, slice2)
 	fmt.Println(slice3, len(slice3), cap(slice3))
 
 	// Map
@@ -127,6 +149,8 @@ func main() {
 	fmt.Printf("map1: %v\n", map1)
 	delete(map1, "France")
 	fmt.Printf("删除 France 后，map1: %v\n", map1)
+	capital, ok := map1["France"]
+	fmt.Printf("France: %s, %v\n", capital, ok)
 
 	// Range
 	for i, num := range slice1 {
@@ -137,12 +161,16 @@ func main() {
 	}
 
 	// interface
-	book1.say()
-	book2.say()
+	var book3 BInterface = new(Books)
+	book3.call()
+
+	var person BInterface = Person{name: "张三", age: 10}
+	person.say()
 
 	// 线程
 	go say("world")
-	say("hello")
+	//say("hello")
+	go say("hello")
 
 	m := []int{7, 2, 8, -9, 4, 0}
 	n := make(chan int)
