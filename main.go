@@ -5,6 +5,7 @@ import (
 	"time"
 )
 import "awesomeProject/myMath"
+import "awesomeProject/http"
 
 type BInterface interface {
 	say()
@@ -190,6 +191,9 @@ func main() {
 	for v := range n3 {
 		fmt.Println(v)
 	}
+
+	// 启动http服务
+	http.Handler()
 
 }
 
