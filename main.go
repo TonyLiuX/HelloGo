@@ -5,7 +5,7 @@ import (
 	"time"
 )
 import "awesomeProject/myMath"
-import "awesomeProject/http"
+import "awesomeProject/mysql"
 
 type BInterface interface {
 	say()
@@ -187,13 +187,16 @@ func main() {
 	fmt.Printf("%d\n", <-n2)
 
 	n3 := make(chan int, 10)
-	go fibonacci(10, n3)
+	go fibonacci(1, n3)
 	for v := range n3 {
 		fmt.Println(v)
 	}
 
 	// 启动http服务
-	http.Handler()
+	//http.Handler()
+
+	// 数据库
+	mysql.Sql()
 
 }
 
