@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"time"
 )
-import "awesomeProject/myMath"
-import "awesomeProject/mysql"
+import "gitee.com/tonyliu88/go-test/myMath"
+import "gitee.com/tonyliu88/go-test/mysql"
 
 type BInterface interface {
 	say()
