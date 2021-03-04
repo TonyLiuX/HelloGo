@@ -73,6 +73,7 @@ type User struct {
 func main() {
 	// 常规创建结构体实例
 	var p1 Person
+	fmt.Printf("p1:%#v\n", p1)
 	p1.name = "张三"
 	p1.city = "上海"
 	p1.age = 18
@@ -110,7 +111,7 @@ func main() {
 
 	// 方法
 	p5.dream()
-	p5.setAge(50)
+	p5.setAge(51)
 	fmt.Printf("p5修改年纪后:%v\n", p5)
 	p5.setAge2(40)
 	fmt.Printf("p5修改年纪后:%v\n", p5)
